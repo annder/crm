@@ -1,1 +1,10 @@
-module.exports = {};
+const path = require('path');
+
+module.exports = {
+  webpack: {
+    alias: {
+      '@': path.resolve('src'),
+      '~': path.resolve('src/views'),
+    },
+  },
+};
