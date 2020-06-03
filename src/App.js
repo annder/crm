@@ -1,23 +1,11 @@
 import React from 'react';
 import './App.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-} from '@ant-design/icons';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from '~/Home/Home';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
 
 function About() {
   return (
@@ -51,7 +39,19 @@ const SibarItems = [
     ],
   },
   {
-    title: '1',
+    title: '数据管理',
+    children: [{ title: '数据字典目录' }, { title: '字典明细' }],
+  },
+  {
+    title: '客户管理',
+    children: [
+      { title: '客户表' },
+      { title: '客户状态' },
+      { title: '客户关系' },
+    ],
+  },
+  {
+    title: '报表统计',
   },
 ];
 
@@ -59,7 +59,7 @@ const RouterConfig = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home></Home>
       </Route>
       <Route path="/about">
         <About />
@@ -71,6 +71,7 @@ const RouterConfig = () => {
   );
 };
 
+// 主内容
 const MainContent = () => (
   <Layout style={{ padding: '0 24px 24px' }}>
     <Content
@@ -85,12 +86,15 @@ const MainContent = () => (
     </Content>
   </Layout>
 );
+
+// 右边的菜单栏
 const SibarMenu = () => {
+  // TODO 这里解决Key的问题
   return (
     <Menu
       mode="inline"
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
+      // defaultSelectedKeys={['1']}
+      // defaultOpenKeys={}
       style={{ height: '100%', borderRight: 0 }}
     >
       {SibarItems.map((element, index) =>
@@ -98,12 +102,14 @@ const SibarMenu = () => {
           <SubMenu key={index} title={element.title}>
             {element.children
               ? element.children.map((subItem, subIndex) => (
-                  <Menu.Item key={subIndex}>{subItem.title}</Menu.Item>
+                  <Menu.Item key={'submenu-item' + subIndex}>
+                    {subItem.title}
+                  </Menu.Item>
                 ))
               : null}
           </SubMenu>
         ) : (
-          <Menu.Item key={index}>{element.title}</Menu.Item>
+          <Menu.Item key={'emnu-item' + index}>{element.title}</Menu.Item>
         )
       )}
     </Menu>
