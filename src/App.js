@@ -1,18 +1,17 @@
-import React from 'react';
-import './App.css';
-import { Layout, Menu } from 'antd';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from '~/Home/Home';
-
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+import React from 'react'
+import './App.css'
+import { Layout, Menu } from 'antd'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from '~/Home/Home'
+const { SubMenu } = Menu
+const { Header, Content, Sider } = Layout
 
 function About() {
   return (
     <div>
       <h2>About</h2>
     </div>
-  );
+  )
 }
 
 function Dashboard() {
@@ -20,7 +19,7 @@ function Dashboard() {
     <div>
       <h2>Dashboard</h2>
     </div>
-  );
+  )
 }
 
 const SibarItems = [
@@ -53,7 +52,7 @@ const SibarItems = [
   {
     title: '报表统计',
   },
-];
+]
 
 const RouterConfig = () => {
   return (
@@ -68,8 +67,8 @@ const RouterConfig = () => {
         <Dashboard />
       </Route>
     </Switch>
-  );
-};
+  )
+}
 
 // 主内容
 const MainContent = () => (
@@ -85,7 +84,7 @@ const MainContent = () => (
       <RouterConfig />
     </Content>
   </Layout>
-);
+)
 
 // 右边的菜单栏
 const SibarMenu = () => {
@@ -113,8 +112,8 @@ const SibarMenu = () => {
         )
       )}
     </Menu>
-  );
-};
+  )
+}
 
 function App() {
   return (
@@ -133,7 +132,7 @@ function App() {
         </Layout>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

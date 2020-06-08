@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Row, Col, Card } from 'antd';
-import './Home.scss';
-import echarts from 'echarts';
+import React, { useEffect, useState } from 'react'
+import { Row, Col, Card } from 'antd'
+import './Home.scss'
+import echarts from 'echarts'
+
 export default (params) => {
   useEffect(() => {
-    const getColumn = document.getElementById('column-chart');
-    const myEcharts = echarts.init(getColumn);
-  });
+    const getColumn = document.getElementById('column-chart')
+    const myEcharts = echarts.init(getColumn)
+  })
 
   return (
     <React.Fragment>
@@ -24,5 +25,5 @@ export default (params) => {
         </Row>
       </Card>
     </React.Fragment>
-  );
-};
+  )
+}

@@ -1,10 +1,10 @@
-import Dexie from 'dexie';
-import ChartDataGenterate from './../utils/date';
+import Dexie from 'dexie'
+import ChartDataGenterate from './../utils/date'
 
-const ColumnChartDB = new Dexie('charts');
+const ColumnChartDB = new Dexie('charts')
 ColumnChartDB.version(2).stores({
   options: 'name,title,tooltip,tooltip,xAxis,yAxis,series',
-});
+})
 
 ColumnChartDB.options.transaction('rw', ColumnChartDB.options, async () => {
   /**
@@ -13,7 +13,7 @@ ColumnChartDB.options.transaction('rw', ColumnChartDB.options, async () => {
 
   const dayFlowNumber = await ColumnChartDB.options
     .where({ title: '日流量' })
-    .count();
+    .count()
   if (dayFlowNumber != 0) {
     await ColumnChartDB.options.add({
       title: {
@@ -34,8 +34,8 @@ ColumnChartDB.options.transaction('rw', ColumnChartDB.options, async () => {
           data: [5, 20, 36, 10, 10, 20],
         },
       ],
-    });
+    })
   }
-});
+})
 
-export default ColumnChartDB;
+export default ColumnChartDB
